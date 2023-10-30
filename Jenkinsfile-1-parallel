@@ -3,32 +3,32 @@ pipeline {
   stages {
     stage('BuildAndTest') {
       parallel {
-        stage('macos') {
-          agent {label 'macos'}
+        stage('one') {
+          agent {label 'slave-server-2'}
           stages {
             stage('Build') {
               steps {
-                sh 'echo Do Build for macos'
+                sh 'echo Do Build for one'
               }
             }
             stage('Test') {
               steps {
-                sh 'echo Do Test for macos'
+                sh 'echo Do Test for one'
               }
             }
           }
         }
-        stage('linux') {
-          agent {label 'linux'}
+        stage('two') {
+          agent {label 'slave-server-3'}
           stages {
             stage('Build') {
               steps {
-                sh 'echo Do Build for linux'
+                sh 'echo Do Build for two'
               }
             }
             stage('Test') {
               steps {
-                sh 'echo Do Test for linux'
+                sh 'echo Do Test for two'
               }
             }
           }
